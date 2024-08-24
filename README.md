@@ -1,1 +1,1 @@
-# paseto-golang-sqlc
+### PASETO - Token-Based Authentication in Go
