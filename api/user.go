@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"time"
 
+	db "github.com/dunky-star/pasetoauth/db/sqlc"
 	"github.com/dunky-star/pasetoauth/util"
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
