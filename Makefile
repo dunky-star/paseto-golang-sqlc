@@ -7,9 +7,11 @@ migrateup:
 	migrate -path db/migration -database "$(DB_URL)" -verbose up
 migratedown:
 	migrate -path db/migration -database "$(DB_URL)" -verbose down
+new_migration:
+	migrate create -ext sql -dir db/migration -seq $(name)
 sqlc:
 	sqlc generate
 server:
 	go run main.go
 
-.PHONY: createdb dropdb migrateup migratedown sqlc server
+.PHONY: createdb dropdb migrateup migratedown new_migration sqlc server

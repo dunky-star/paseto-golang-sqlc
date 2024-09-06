@@ -6,23 +6,25 @@ import (
 	"os"
 	"testing"
 
+	"github.com/dunky-star/pasetoauth/util"
 	_ "github.com/lib/pq"
 )
 
-const (
-	dbDriver = "postgres"
-	dbSource = "postgresql://postgres:cluster@1@localhost:5432/paseto_auth?sslmode=disable"
-)
-
 var testQueries *Queries // Deifining it as a global variable since we shall use it extensively in all unit tests
+var testDB *sql.DB
 
 func TestMain(m *testing.M) {
-	conn, err := sql.Open(dbDriver, dbSource)
+
+	config, err := util.LoadConfig("../")
+	if err != nil {
+		log.Fatal("Cannot load configuration. ", err)
+	}
+	testDB, err = sql.Open(config.DBDriver, config.DBSource)
 	if err != nil {
 		log.Fatal("cannot connect to db:", err)
 	}
 
-	testQueries = New(conn)
+	testQueries = New(testDB)
 
 	os.Exit(m.Run())
 }
