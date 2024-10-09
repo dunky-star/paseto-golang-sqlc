@@ -2,11 +2,16 @@ import { Link } from "react-router-dom";
 import "./../common/Signup.css";
 
 export const Signup = () => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // Do something
+  };
+
   return (
     <div className="container">
       <div className="center">
         <h1>Sign up</h1>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="txt_field">
             <input type="text" name="" id="name" required></input>
             <span></span>
@@ -37,9 +42,12 @@ export const Signup = () => {
             <span></span>
             <label htmlFor="cpassword">Confirm Password</label>
           </div>
-          <input name="submit" type="Submit" value="Register"></input>
+          <button type="submit" name="submit">
+            Register
+          </button>
+
           <div className="signup_link">
-            Have an Account ? <Link to="/login">Login Here</Link>
+            Have an Account ? <Link to="/login">Login here</Link>
           </div>
         </form>
       </div>
