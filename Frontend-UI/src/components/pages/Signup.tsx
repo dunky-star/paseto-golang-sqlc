@@ -8,7 +8,7 @@ export const Signup = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container mt-15">
       <div className="center">
         <h1>Sign up</h1>
         <form onSubmit={handleSubmit}>
