@@ -2,19 +2,30 @@ import { useState } from "react";
 import "../common/Login.css";
 
 export const Login = () => {
-  // const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
-  const [formData, setFormData] = useState({ username: "", password: "" });
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  //const [formData, setFormData] = useState({ username: "", password: "" });
 
-  const onChangeFormValue = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
+  const onChangeFormValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    const { name, value } = e.target;
+    if (name === "username") {
+      setUsername(value);
+    } else if (name === "password") {
+      setPassword(value);
+    }
+    //setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
   const handleLogin = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+
+    // Make an API call or handle login logic here
+    console.log("Username:", username);
+    console.log("Password:", password);
     // Do something
-    console.log(formData.username);
-    console.log(formData.password);
+    // console.log(formData.username);
+    // console.log(formData.password);
 
     // make call to api to login
     // reducers - action
@@ -40,7 +51,7 @@ export const Login = () => {
           name="username"
           id="username"
           className="form-input"
-          value={formData.username}
+          value={username}
           onChange={(e) => onChangeFormValue(e)}
         ></input>
       </div>
@@ -53,7 +64,7 @@ export const Login = () => {
           name="password"
           id="password"
           className="form-input"
-          value={formData.password}
+          value={password}
           onChange={(e) => onChangeFormValue(e)}
         ></input>
       </div>
@@ -61,7 +72,7 @@ export const Login = () => {
         type="submit"
         onClick={(e) => handleLogin(e)}
         className="btn btn-block"
-        disabled={!formData.username || !formData.password}
+        disabled={!username || !password}
       >
         Submit
       </button>
