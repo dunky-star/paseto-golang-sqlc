@@ -13,6 +13,9 @@
     "moduleDetection": "force",
     "noEmit": true,
     "jsx": "react-jsx",
+    "allowJs": true, // Allow JavaScript files to be imported
+    "checkJs": false, // Disable type-checking for JavaScript files
+    "esModuleInterop": true, // Ensure compatibility between CommonJS and ES modules
 
     /* Linting */
     "strict": true,
@@ -20,5 +23,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"]
+  "include": [
+    "src/**/*" // Include all files in the 'src' folder
+  ]
 }

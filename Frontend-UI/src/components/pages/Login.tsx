@@ -52,7 +52,7 @@ export const Login = () => {
           id="username"
           className="form-input"
           value={username}
-          onChange={(e) => onChangeFormValue(e)}
+          onChange={onChangeFormValue}
         ></input>
       </div>
       <div className="form-row">
@@ -65,7 +65,7 @@ export const Login = () => {
           id="password"
           className="form-input"
           value={password}
-          onChange={(e) => onChangeFormValue(e)}
+          onChange={onChangeFormValue}
         ></input>
       </div>
       <button
