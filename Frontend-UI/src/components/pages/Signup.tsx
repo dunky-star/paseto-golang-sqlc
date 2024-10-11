@@ -23,6 +23,7 @@ export const Signup = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Do something
+    console.log(user);
   };
 
   return (
